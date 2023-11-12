@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Doctor } from "../doctor/doctor.component";
+import { Doctor } from "@common/doctor";
 
 @Injectable({
   providedIn: "root",
@@ -7,6 +7,10 @@ import { Doctor } from "../doctor/doctor.component";
 export class DoctorService {
   getDoctors(): Doctor[] {
     return this.DOCTOR_LIST;
+  }
+
+  getAvailableDoctorId(): number {
+    return 453; // need a function to get next available id
   }
 
   DOCTOR_LIST: Doctor[] = [

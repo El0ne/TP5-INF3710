@@ -1,20 +1,17 @@
 import { Component, OnInit } from "@angular/core";
-// import { NgForm } from "@angular/forms";
-import { Doctor } from "../doctor/doctor.component";
-
+import { DoctorService } from "../services/doctor.service";
+import { Doctor } from "@common/doctor";
 @Component({
   selector: "app-insert",
   templateUrl: "./insert.component.html",
   styleUrls: ["./insert.component.css"],
 })
 export class InsertComponent implements OnInit {
-  // @ViewChild("doctorForm") doctorForm!: NgForm;
-
   defaultField: string;
   defaultServiceId: number;
 
   doctor: Doctor = {
-    id: 33, // need a function to get next available id
+    id: 0,
     firstName: "Default Name",
     lastName: "Default Last Name",
     specialization: "Generalist",
@@ -22,13 +19,15 @@ export class InsertComponent implements OnInit {
     serviceId: 1, // need a function to get all the available service id
   };
 
-  constructor() {}
+  constructor(private doctorService: DoctorService) {}
 
   ngOnInit(): void {
+    this.doctor.id = this.doctorService.getAvailableDoctorId();
     this.defaultServiceId = 11;
   }
 
   onSubmit() {
     console.log(this.doctor);
+    // open modal if doctor id is not available
   }
 }
