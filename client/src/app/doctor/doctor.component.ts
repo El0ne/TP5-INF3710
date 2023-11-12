@@ -1,13 +1,14 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatTableDataSource } from "@angular/material/table";
+import { DoctorService } from "../services/doctor.service";
 
 @Component({
   selector: "app-doctor",
   templateUrl: "./doctor.component.html",
   styleUrls: ["./doctor.component.css"],
 })
-export class DoctorComponent {
+export class DoctorComponent implements OnInit {
   displayedColumns = [
     "id",
     "first-name",
@@ -16,9 +17,20 @@ export class DoctorComponent {
     "experience",
     "service-id",
   ];
-  dataSource = new MatTableDataSource<Doctor>(DOCTOR_LIST);
+  dataSource = new MatTableDataSource<Doctor>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  doctors: Doctor[];
+
+  constructor(private doctorService: DoctorService) {}
+
+  ngOnInit(): void {
+    // this.doctorService.getDoctors().subscribe((doctors: Doctor[]) => {
+    //   this.doctors = doctors;
+    // });
+    this.doctors = this.doctorService.getDoctors();
+    this.dataSource = new MatTableDataSource<Doctor>(this.doctors);
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -40,38 +52,3 @@ export interface Doctor {
   yoe: number;
   serviceId: number;
 }
-
-export const DOCTOR_LIST: Doctor[] = [
-  {
-    id: 0,
-    firstName: "Joe",
-    lastName: "Trout",
-    field: "Neuro",
-    yoe: 11,
-    serviceId: 1,
-  },
-  {
-    id: 1,
-    firstName: "Joe",
-    lastName: "Trout",
-    field: "Neuro",
-    yoe: 11,
-    serviceId: 1,
-  },
-  {
-    id: 4,
-    firstName: "Joe",
-    lastName: "Trout",
-    field: "Neuro",
-    yoe: 11,
-    serviceId: 1,
-  },
-  {
-    id: 2,
-    firstName: "Joe",
-    lastName: "Trout",
-    field: "Neuro",
-    yoe: 11,
-    serviceId: 1,
-  },
-];

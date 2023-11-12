@@ -10,11 +10,13 @@ import { AppMaterialModule } from './modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DoctorComponent } from './doctor/doctor.component';
 import { MatPaginatorModule } from "@angular/material/paginator";
+import { InsertComponent } from './insert/insert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DoctorComponent
+    DoctorComponent,
+    InsertComponent
   ],
   imports: [
     CommonModule,
