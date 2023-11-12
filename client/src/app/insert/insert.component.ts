@@ -14,12 +14,12 @@ export class InsertComponent implements OnInit {
   defaultServiceId: number;
 
   doctor: Doctor = {
-    id: 33,
+    id: 33, // need a function to get next available id
     firstName: "Default Name",
     lastName: "Default Last Name",
     field: "list",
     yoe: 0,
-    serviceId: 1,
+    serviceId: 1, // need a function to get all the available service id
   };
 
   constructor() {}

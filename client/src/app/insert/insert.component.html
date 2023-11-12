@@ -41,7 +41,9 @@
 
   <mat-form-field>
     <mat-select placeholder="Specialization" [(value)]="this.defaultField">
-      <mat-option [(value)]="this.defaultField">this.defaultField</mat-option>
+      <mat-option [(value)]="this.defaultField">{{
+        this.defaultField
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -60,4 +62,8 @@
       }}</mat-option>
     </mat-select>
   </mat-form-field>
+
+  <button mat-button (click)="onSubmit()">Ajouter le Médecin</button>
 </div>
+
+<h1>{{ this.doctor.firstName }}</h1>
