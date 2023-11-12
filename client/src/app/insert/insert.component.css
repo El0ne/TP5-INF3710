@@ -1,17 +1,16 @@
-/* .container {
+.container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
 }
 
-.container > * {
-  width: 100%;
-} */
-
-.example-container {
+.form {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
-.example-container > * {
-  width: 100%;
+button:hover {
+  color: white;
+  background-color: black;
 }

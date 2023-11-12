@@ -17,7 +17,7 @@ export class InsertComponent implements OnInit {
     id: 33, // need a function to get next available id
     firstName: "Default Name",
     lastName: "Default Last Name",
-    field: "list",
+    specialization: "Generalist",
     yoe: 0,
     serviceId: 1, // need a function to get all the available service id
   };
@@ -25,7 +25,6 @@ export class InsertComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.defaultField = "Generalist";
     this.defaultServiceId = 11;
   }
 

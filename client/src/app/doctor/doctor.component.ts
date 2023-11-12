@@ -37,18 +37,11 @@ export class DoctorComponent implements OnInit {
   }
 }
 
-export interface Element {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
 export interface Doctor {
   id: number;
   firstName: string;
   lastName: string;
-  field: string;
+  specialization: string;
   yoe: number;
   serviceId: number;
 }
