@@ -8,7 +8,7 @@ import { Doctor } from "@common/doctor";
 })
 export class InsertComponent implements OnInit {
   defaultField: string;
-  defaultServiceId: number;
+  // defaultServiceId: number;
 
   doctor: Doctor = {
     id: 0,
@@ -18,16 +18,17 @@ export class InsertComponent implements OnInit {
     yoe: 0,
     serviceId: 1, // need a function to get all the available service id
   };
+  servicesId: number[];
 
   constructor(private doctorService: DoctorService) {}
 
   ngOnInit(): void {
     this.doctor.id = this.doctorService.getAvailableDoctorId();
-    this.defaultServiceId = 11;
+    this.servicesId = this.doctorService.getListOfServiceId();
   }
 
   onSubmit() {
     console.log(this.doctor);
-    // open modal if doctor id is not available
+    // open modal if doctor id is not  or we could load all the doctors id on init and not allow them to be entered
   }
 }

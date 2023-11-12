@@ -13,6 +13,11 @@ export class DoctorService {
     return 453; // need a function to get next available id
   }
 
+  getListOfServiceId(): number[] {
+    // should be in other service but don't wanna create service.service
+    return [1, 3, 6];
+  }
+
   DOCTOR_LIST: Doctor[] = [
     {
       id: 999,

@@ -32,9 +32,9 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Service ID" [(value)]="this.defaultServiceId">
-        <mat-option [(value)]="this.defaultServiceId">{{
-          this.defaultServiceId
+      <mat-select placeholder="Service ID" [(value)]="this.servicesId[0]">
+        <mat-option *ngFor="let service of servicesId" [value]="service">{{
+          service
         }}</mat-option>
       </mat-select>
     </mat-form-field>
