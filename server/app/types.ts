@@ -1,6 +1,6 @@
 export default {
-  Server: Symbol("Server"),
-  Application: Symbol("Application"),
-  DatabaseController: Symbol("DatabaseController"),
-  DatabaseService: Symbol("DatabaseService"),
+	Server: Symbol("Server"),
+	Application: Symbol("Application"),
+	DoctorController: Symbol("DoctorController"),
+	DatabaseService: Symbol("DatabaseService"),
 };

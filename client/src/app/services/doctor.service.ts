@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Doctor } from "@common/doctor";
 import { Observable } from "rxjs";
-import { DATABASE } from "./server-routes";
+import { DOCTOR } from "./server-routes";
 
 @Injectable({
   providedIn: "root",
@@ -15,7 +15,7 @@ export class DoctorService {
   }
 
   getAvailableDoctorId(): Observable<string> {
-    return this.http.get<string>(DATABASE);
+    return this.http.get<string>(DOCTOR);
   }
 
   getListOfServiceId(): number[] {

@@ -4,7 +4,7 @@ import * as cors from "cors";
 import * as express from "express";
 import { injectable } from "inversify";
 import * as logger from "morgan";
-import databaseRouter from "./routes/databaseRouter";
+import doctorRouter from "./routes/doctorRouter";
 
 @injectable()
 export class Application {
@@ -27,7 +27,7 @@ export class Application {
 	}
 
 	public bindRoutes(): void {
-		this.app.use("/database", databaseRouter);
+		this.app.use("/doctor", doctorRouter);
 		// this.app.get("/database", this.databaseController.getId);
 		this.errorHandeling();
 	}
