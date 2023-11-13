@@ -28,7 +28,10 @@ export class InsertComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.doctor.id = this.doctorService.getAvailableDoctorId();
+    this.doctorService.getAvailableDoctorId().subscribe((id) => {
+      this.doctor.id = id;
+      console.log("returned get");
+    });
     this.servicesId = this.doctorService.getListOfServiceId();
   }
 

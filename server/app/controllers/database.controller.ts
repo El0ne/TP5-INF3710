@@ -1,17 +1,21 @@
 import { Router } from "express";
-import { inject, injectable } from "inversify";
-import { DatabaseService } from "../services/database.service";
-import Types from "../types";
+import { injectable } from "inversify";
 
 @injectable()
 export class DatabaseController {
-  public constructor(
-    // @ts-ignore -- À ENLEVER LORSQUE L'IMPLÉMENTATION EST TERMINÉE
-    @inject(Types.DatabaseService) private readonly databaseService: DatabaseService
-  ) {}
+	public constructor() {}
 
-  public get router(): Router {
-    const router: Router = Router();
-    return router;
-  }
+	public get router(): Router {
+		const router: Router = Router();
+		return router;
+	}
+
+	getId(): number {
+		console.log("r");
+		return 346;
+	}
+
+	test(): void {
+		console.log("erg");
+	}
 }

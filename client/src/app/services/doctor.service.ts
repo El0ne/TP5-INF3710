@@ -1,16 +1,22 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Doctor } from "@common/doctor";
+import { Observable } from "rxjs";
+import { DATABASE } from "./server-routes";
 
 @Injectable({
   providedIn: "root",
 })
 export class DoctorService {
+  constructor(private http: HttpClient) {}
+
   getDoctors(): Doctor[] {
     return this.DOCTOR_LIST;
   }
 
-  getAvailableDoctorId(): number {
-    return 453; // need a function to get next available id
+  getAvailableDoctorId(): Observable<number> {
+    // return 453; // need a function to get next available id
+    return this.http.get<number>(DATABASE);
   }
 
   getListOfServiceId(): number[] {
