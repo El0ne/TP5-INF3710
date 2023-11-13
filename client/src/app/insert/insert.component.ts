@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { DoctorService } from "../services/doctor.service";
 import { Doctor } from "@common/doctor";
+import { MatDialog } from "@angular/material/dialog";
+import { ModalComponent } from "@app/modal/modal.component";
 @Component({
   selector: "app-insert",
   templateUrl: "./insert.component.html",
@@ -20,7 +22,10 @@ export class InsertComponent implements OnInit {
   };
   servicesId: number[];
 
-  constructor(private doctorService: DoctorService) {}
+  constructor(
+    private doctorService: DoctorService,
+    private matDialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.doctor.id = this.doctorService.getAvailableDoctorId();
@@ -28,7 +33,15 @@ export class InsertComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.doctor);
+    this.doctorService.addDoctor(this.doctor);
     // open modal if doctor id is not  or we could load all the doctors id on init and not allow them to be entered
+    // .subscribe(message)
+    // if(message)
+    this.openModal("The doctor id is not available. Please try again");
+  }
+  openModal(message: string) {
+    this.matDialog.open(ModalComponent, {
+      data: message,
+    });
   }
 }

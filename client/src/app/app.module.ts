@@ -11,9 +11,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { DoctorComponent } from "./doctor/doctor.component";
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { InsertComponent } from "./insert/insert.component";
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, DoctorComponent, InsertComponent],
+  declarations: [AppComponent, DoctorComponent, InsertComponent, ModalComponent],
   imports: [
     CommonModule,
     BrowserModule,

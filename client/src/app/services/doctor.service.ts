@@ -18,6 +18,10 @@ export class DoctorService {
     return [1, 3, 6];
   }
 
+  addDoctor(doctor: Doctor) {
+    console.log("doctor", doctor);
+  }
+
   DOCTOR_LIST: Doctor[] = [
     {
       id: 999,
