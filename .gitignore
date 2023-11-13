@@ -13,3 +13,6 @@ client/node_modules
 server/node_modules
 client/.angular
 server/out/*
+server/out/app.js.map
+server/out/app.js
+server/out/controllers/database.controller.js
