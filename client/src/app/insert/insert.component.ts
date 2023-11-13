@@ -20,7 +20,7 @@ export class InsertComponent implements OnInit {
     yoe: 0,
     serviceId: 1, // need a function to get all the available service id
   };
-  servicesId: number[];
+  servicesId: number[] = [...Array(10).keys()];
 
   constructor(
     private doctorService: DoctorService,
@@ -31,7 +31,6 @@ export class InsertComponent implements OnInit {
     this.doctorService.getAvailableDoctorId().subscribe((id) => {
       this.doctor.id = Number(id);
     });
-    this.servicesId = this.doctorService.getListOfServiceId();
   }
 
   onSubmit() {

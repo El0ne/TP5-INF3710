@@ -2,7 +2,7 @@ import { injectable } from "inversify";
 
 @injectable()
 export class DoctorController {
-	static getAvailableDocId = (req, res) => {
+	static getAvailableDoctorId = (req, res) => {
 		res.send("10");
 	};
 }

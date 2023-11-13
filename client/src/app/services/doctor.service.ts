@@ -18,11 +18,6 @@ export class DoctorService {
     return this.http.get<string>(DOCTOR);
   }
 
-  getListOfServiceId(): number[] {
-    // should be in other service but don't wanna create service.service
-    return [1, 3, 6];
-  }
-
   addDoctor(doctor: Doctor) {
     console.log("doctor", doctor);
   }

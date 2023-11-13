@@ -3,6 +3,6 @@ import * as express from "express";
 
 const doctorRouter = express.Router();
 
-doctorRouter.get("/", DoctorController.getAvailableDocId);
+doctorRouter.get("/", DoctorController.getAvailableDoctorId);
 
 export default doctorRouter;
