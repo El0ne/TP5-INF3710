@@ -2,20 +2,16 @@ import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
 import * as cors from "cors";
 import * as express from "express";
-import { inject, injectable } from "inversify";
+import { injectable } from "inversify";
 import * as logger from "morgan";
-import { DatabaseController } from "./controllers/database.controller";
-import Types from "./types";
+import databaseRouter from "./routes/databaseRouter";
 
 @injectable()
 export class Application {
 	private readonly internalError: number = 500;
 	public app: express.Application;
 
-	public constructor(
-		@inject(Types.DatabaseController)
-		private databaseController: DatabaseController
-	) {
+	public constructor() {
 		this.app = express();
 		this.config();
 		this.bindRoutes();
@@ -31,7 +27,8 @@ export class Application {
 	}
 
 	public bindRoutes(): void {
-		this.app.get("/database", this.databaseController.getId);
+		this.app.use("/database", databaseRouter);
+		// this.app.get("/database", this.databaseController.getId);
 		this.errorHandeling();
 	}
 
