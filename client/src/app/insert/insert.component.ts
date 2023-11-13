@@ -29,7 +29,7 @@ export class InsertComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getAvailableDoctorId().subscribe((id) => {
-      this.doctor.id = id;
+      this.doctor.id = Number(id);
       console.log("returned get");
     });
     this.servicesId = this.doctorService.getListOfServiceId();

@@ -14,9 +14,8 @@ export class DoctorService {
     return this.DOCTOR_LIST;
   }
 
-  getAvailableDoctorId(): Observable<number> {
-    // return 453; // need a function to get next available id
-    return this.http.get<number>(DATABASE);
+  getAvailableDoctorId(): Observable<string> {
+    return this.http.get<string>(DATABASE);
   }
 
   getListOfServiceId(): number[] {

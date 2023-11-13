@@ -10,12 +10,7 @@ export class DatabaseController {
 		return router;
 	}
 
-	getId(): number {
-		console.log("r");
-		return 346;
-	}
-
-	test(): void {
-		console.log("erg");
-	}
+	getId = (req, res) => {
+		res.send("233");
+	};
 }

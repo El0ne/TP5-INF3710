@@ -32,7 +32,6 @@ export class Application {
 
 	public bindRoutes(): void {
 		this.app.get("/database", this.databaseController.getId);
-		this.app.get("/database/test", this.databaseController.test);
 		this.errorHandeling();
 	}
 
