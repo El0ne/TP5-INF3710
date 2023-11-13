@@ -10,50 +10,15 @@ import { DOCTOR } from "./server-routes";
 export class DoctorService {
   constructor(private http: HttpClient) {}
 
-  getDoctors(): Doctor[] {
-    return this.DOCTOR_LIST;
+  getDoctors(): Observable<any> {
+    return this.http.get<any>(DOCTOR);
   }
 
   getAvailableDoctorId(): Observable<string> {
-    return this.http.get<string>(DOCTOR);
+    return this.http.get<string>(`${DOCTOR}/id`);
   }
 
   addDoctor(doctor: Doctor) {
     console.log("doctor", doctor);
   }
-
-  DOCTOR_LIST: Doctor[] = [
-    {
-      id: 999,
-      firstName: "Joe",
-      lastName: "Trout",
-      specialization: "Neuro",
-      yoe: 11,
-      serviceId: 1,
-    },
-    {
-      id: 1,
-      firstName: "Joe",
-      lastName: "Trout",
-      specialization: "Neuro",
-      yoe: 11,
-      serviceId: 1,
-    },
-    {
-      id: 4,
-      firstName: "Joe",
-      lastName: "Trout",
-      specialization: "Neuro",
-      yoe: 11,
-      serviceId: 1,
-    },
-    {
-      id: 2,
-      firstName: "Joe",
-      lastName: "Trout",
-      specialization: "Neuro",
-      yoe: 11,
-      serviceId: 1,
-    },
-  ];
 }

@@ -26,14 +26,8 @@ export class DoctorComponent implements OnInit {
   constructor(private doctorService: DoctorService) {}
 
   ngOnInit(): void {
-    // this.doctorService.getDoctors().subscribe((doctors: Doctor[]) => {
-    //   this.doctors = doctors;
-    // });
-    this.doctors = this.doctorService.getDoctors();
-    this.dataSource = new MatTableDataSource<Doctor>(this.doctors);
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.doctorService.getDoctors().subscribe((doctorList) => {
+      this.dataSource.data = doctorList.doctors;
+    });
   }
 }
