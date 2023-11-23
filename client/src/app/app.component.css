@@ -1,39 +1,176 @@
-.title {
-  color: rgba(154, 117, 240, 1);
-  font-family: 'Roboto', sans-serif;
-  margin-left: 10px;
-  font-weight: bold;
+html, body {
+  width: 100%;
+  min-height: 100vh; 
+  margin: 0;
+  padding: 0;
+  background-color: #f1dae5; 
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+}
+
+.box {
+  width: 90%;
+  min-height: 95vh;
+  background-color: #fff;
+  border-radius: 2rem;
+  padding: 3vh 2.25rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  background-color: #f6f7f8;
+  width: 95%;
+  height: 5rem; 
+  border-radius: 0.625rem;
+  margin-bottom: 0.25rem;
+  position: relative;
+  display: flex; 
 }
 
 .home {
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content:center;
-  width: 80%;
-  margin-left: 10.5%;
-  font-family: 'Roboto', sans-serif;
-  line-height: normal;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 60px;
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+.title {
+  font-size: 4.5rem; 
+  flex-grow: 1; 
   text-align: center;
-  background: rgba(154, 117, 240, 0.4);
-  padding-top: 2%;
-  padding-bottom: 2%;
+  align-self: center;
+  left: -2rem;
 }
 
-.btn {
-  margin-top: 1%;
-  font-size: 20px;
-  font-family: 'Roboto', sans-serif;
-  padding: 10px;
+.medecin {
+  display: flex; /* Enables Flexbox */
+  flex-direction: column; /* Stacks children vertically */
+  justify-content: center; /* Centers children on the main axis */
+  align-items: center; /* Centers children on the cross axis */
+  background-color: #252b61;
+  color: #dbebff;
+  width: 95%;
+  height: 50vh; /* Adjust the height as needed */
+  border-radius: 0.625rem;
+  margin-bottom: 1rem;
+  position: relative; /* For absolute positioning of the title and description */
+  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
 }
 
-.main-nav {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  padding: 1%;
+.medecin h1 {
+  position: absolute;
+  top: 1rem; /* Adjust this value as needed */
+  left: 1rem; /* Adjust this value as needed */
 }
+
+.medecin p { /* Assuming your description is in a <p> tag */
+  position: absolute;
+  top: 3rem; /* Adjust this value so the description is just under the title */
+  left: 1rem; /* Adjust this value as needed */
+  width: 18rem;
+  margin-top: 2rem;
+  font-size: 1.75rem;
+}
+
+.medecin i {
+  font-size: 20rem;
+}
+
+.medIcons{
+  display: flex;
+  flex-direction: row;
+  margin-right: 4rem;
+}
+
+
+.modification {
+  display: flex;
+  justify-content: space-between;
+  width: 96%;
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.insert, .modify, .delete {
+  flex: 1; /* Allows the boxes to grow and fill the parent div */
+  margin: 0.625rem; /* Adjust the margin as needed */
+  border-radius: 0.625rem;
+  min-height: 6.25rem;
+  position: relative;
+  color:#252b61;
+  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.icons {
+  position: absolute;
+  bottom: 1rem; /* Adjust the value as needed */
+  right: 1rem; /* Adjust the value as needed */
+}
+
+.insert{
+ background-color: #f0da69;
+}
+
+.modify{
+  background-color: #a3dac2;
+}
+
+.delete{
+  background-color: #e7c2d4;
+}
+
+
+.insert .fa, .insert .material-icons {
+  color: #debb0d; 
+}
+
+.modify .fa, .modify .material-icons {
+  color: #80ccab; 
+}
+
+.delete .fa, .delete .material-icons {
+  color: #d89cb9;
+}
+
+.medecin .fa, .medecin .material-icons {
+  color: #dbebff; 
+}
+.fa, .material-icons {
+  font-size: 12.5rem;
+}
+
+h1 {
+  position: relative;
+  left: 1rem;
+  top: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+h2 {
+  position: relative;
+  left: 1rem;
+  top: 1rem;
+  font-size: x-large;
+  width: 16rem;
+}
+
+.insert:hover, .delete:hover, .modify:hover, .medecin:hover {
+  transform: scale(1.05);
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
+
+.insert:active, .delete:active, .modify:active, .medecin:active {
+  animation: transform 0.4s ease forwards; /* Trigger the animation on click */
+  transform: scale(0.95);
+
+}
+
