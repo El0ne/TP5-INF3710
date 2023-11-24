@@ -50,30 +50,30 @@ html, body {
 }
 
 .medecin {
-  display: flex; /* Enables Flexbox */
-  flex-direction: column; /* Stacks children vertically */
-  justify-content: center; /* Centers children on the main axis */
-  align-items: center; /* Centers children on the cross axis */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
   background-color: #252b61;
   color: #dbebff;
   width: 95%;
-  height: 50vh; /* Adjust the height as needed */
+  height: 50vh; 
   border-radius: 0.625rem;
   margin-bottom: 1rem;
-  position: relative; /* For absolute positioning of the title and description */
-  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+  position: relative;
+  transition: transform 0.3s ease; 
 }
 
 .medecin h1 {
   position: absolute;
-  top: 1rem; /* Adjust this value as needed */
-  left: 1rem; /* Adjust this value as needed */
+  top: 1rem; 
+  left: 1rem; 
 }
 
-.medecin p { /* Assuming your description is in a <p> tag */
+.medecin p { 
   position: absolute;
-  top: 3rem; /* Adjust this value so the description is just under the title */
-  left: 1rem; /* Adjust this value as needed */
+  top: 3rem; 
+  left: 1rem; 
   width: 18rem;
   margin-top: 2rem;
   font-size: 1.75rem;
@@ -99,19 +99,19 @@ html, body {
 }
 
 .insert, .modify, .delete {
-  flex: 1; /* Allows the boxes to grow and fill the parent div */
-  margin: 0.625rem; /* Adjust the margin as needed */
+  flex: 1;
+  margin: 0.625rem; 
   border-radius: 0.625rem;
   min-height: 6.25rem;
   position: relative;
   color:#252b61;
-  transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+  transition: transform 0.3s ease; 
 }
 
 .icons {
   position: absolute;
-  bottom: 1rem; /* Adjust the value as needed */
-  right: 1rem; /* Adjust the value as needed */
+  bottom: 1rem; 
+  right: 1rem;
 }
 
 .insert{
@@ -169,7 +169,7 @@ h2 {
 }
 
 .insert:active, .delete:active, .modify:active, .medecin:active {
-  animation: transform 0.4s ease forwards; /* Trigger the animation on click */
+  animation: transform 0.4s ease forwards; 
   transform: scale(0.95);
 
 }
