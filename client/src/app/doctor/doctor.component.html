@@ -18,8 +18,10 @@
     </ng-container>
 
     <ng-container matColumnDef="field">
-      <mat-header-cell *matHeaderCellDef> Field </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.field }} </mat-cell>
+      <mat-header-cell *matHeaderCellDef> Specialization </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.specialization }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="experience">
