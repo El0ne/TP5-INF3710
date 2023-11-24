@@ -1,7 +1,12 @@
 <div class="container">
   <div class="form">
     <mat-form-field>
-      <input matInput placeholder="ID du Médecin" [(ngModel)]="doctor.id" />
+      <input
+        matInput
+        type="number"
+        placeholder="ID du Médecin"
+        [(ngModel)]="doctor.id"
+      />
     </mat-form-field>
 
     <mat-form-field>
@@ -32,6 +37,7 @@
     <mat-form-field>
       <input
         matInput
+        type="number"
         placeholder="Années d'Expérience"
         [(ngModel)]="doctor.yoe"
       />
@@ -45,6 +51,17 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-button (click)="onSubmit()">Ajouter Médecin</button>
+    <button
+      mat-button
+      [disabled]="
+        !this.doctor.id ||
+        !this.doctor.firstName ||
+        !this.doctor.lastName ||
+        this.doctor.yoe.toString() === ''
+      "
+      (click)="onSubmit()"
+    >
+      Ajouter Médecin
+    </button>
   </div>
 </div>
