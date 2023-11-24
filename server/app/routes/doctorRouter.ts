@@ -3,7 +3,8 @@ import * as express from "express";
 
 const doctorRouter = express.Router();
 
-doctorRouter.get("/id", DoctorController.getAvailableDoctorId);
+doctorRouter.get("/:id", DoctorController.getDoctorFromID);
+doctorRouter.get("/available", DoctorController.getAvailableDoctorId);
 doctorRouter.get("/", DoctorController.getDoctors);
 doctorRouter.post("/", DoctorController.createDoctor);
 

@@ -3,6 +3,18 @@ import { injectable } from "inversify";
 
 @injectable()
 export class DoctorController {
+	static getDoctorFromID = (req, res) => {
+		console.log("req: ", req);
+		console.log("req.params: ", req.params);
+		console.log("req.params.id: ", req.params.id);
+		for (const doctor of DoctorController.DOCTOR_LIST) {
+			if (doctor.id == req.params.id) {
+				res.send(doctor);
+				return;
+			}
+		}
+	};
+
 	static createDoctor = (req, res) => {
 		for (const doctor of DoctorController.DOCTOR_LIST) {
 			if (doctor.id == req.body.id) {
