@@ -10,7 +10,6 @@ import { ModalComponent } from "@app/modal/modal.component";
 })
 export class InsertComponent implements OnInit {
   defaultField: string;
-  // defaultServiceId: number;
 
   doctor: Doctor = {
     id: 0,
@@ -18,7 +17,7 @@ export class InsertComponent implements OnInit {
     lastName: "Default Last Name",
     specialization: "Generalist",
     yoe: 0,
-    serviceId: 1, // need a function to get all the available service id
+    serviceId: 1,
   };
   servicesId: number[] = [...Array(10).keys()];
 
@@ -34,7 +33,7 @@ export class InsertComponent implements OnInit {
   }
 
   onSubmit() {
-    this.doctorService.addDoctor(this.doctor);
+    this.doctorService.addDoctor(this.doctor).subscribe();
     // open modal if doctor id is not  or we could load all the doctors id on init and not allow them to be entered
     // .subscribe(message)
     // if(message)
