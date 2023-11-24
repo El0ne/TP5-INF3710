@@ -5,5 +5,6 @@ const doctorRouter = express.Router();
 
 doctorRouter.get("/id", DoctorController.getAvailableDoctorId);
 doctorRouter.get("/", DoctorController.getDoctors);
+doctorRouter.post("/", DoctorController.createDoctor);
 
 export default doctorRouter;

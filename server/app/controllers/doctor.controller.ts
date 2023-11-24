@@ -3,12 +3,18 @@ import { injectable } from "inversify";
 
 @injectable()
 export class DoctorController {
+	static createDoctor = (req, res) => {
+		// TODO add doctor to list
+		console.log("doctor received");
+		console.log(req.body);
+	};
+
 	static getDoctors = (req, res) => {
 		res.send({ doctors: DoctorController.DOCTOR_LIST });
 	};
 
 	static getAvailableDoctorId = (req, res) => {
-		res.send("10");
+		res.send("10"); // TODO return an available id
 	};
 
 	static DOCTOR_LIST: Doctor[] = [

@@ -18,7 +18,10 @@ export class DoctorService {
     return this.http.get<string>(`${DOCTOR}/id`);
   }
 
-  addDoctor(doctor: Doctor) {
-    console.log("doctor", doctor);
+  addDoctor(doctor: Doctor): Observable<Doctor> {
+    const headers = { "content-type": "application/json" };
+    const body = JSON.stringify(doctor);
+    console.log(body);
+    return this.http.post<Doctor>(DOCTOR, body, { headers });
   }
 }
