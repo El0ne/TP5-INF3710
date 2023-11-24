@@ -1,20 +1,24 @@
 <div class="container">
   <div class="form">
     <mat-form-field>
-      <input matInput placeholder="Doctor id" [(ngModel)]="doctor.id" />
+      <input matInput placeholder="ID du Médecin" [(ngModel)]="doctor.id" />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="First Name" [(ngModel)]="doctor.firstName" />
+      <input matInput placeholder="Prénom" [(ngModel)]="doctor.firstName" />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Last Name" [(ngModel)]="doctor.lastName" />
+      <input
+        matInput
+        placeholder="Nom de Famille"
+        [(ngModel)]="doctor.lastName"
+      />
     </mat-form-field>
 
     <mat-form-field>
       <mat-select
-        placeholder="Specialization"
+        placeholder="Spécialization"
         [(value)]="doctor.specialization"
       >
         <mat-option
@@ -28,19 +32,19 @@
     <mat-form-field>
       <input
         matInput
-        placeholder="Years of Experience"
+        placeholder="Années d'Expérience"
         [(ngModel)]="doctor.yoe"
       />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Service ID" [(ngModel)]="doctor.serviceId">
+      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.serviceId">
         <mat-option *ngFor="let service of servicesId" [value]="service">{{
           service
         }}</mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button mat-button (click)="onSubmit()">Add Doctor</button>
+    <button mat-button (click)="onSubmit()">Ajouter Médecin</button>
   </div>
 </div>

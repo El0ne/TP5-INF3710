@@ -13,8 +13,8 @@ export class InsertComponent implements OnInit {
 
   doctor: Doctor = {
     id: 0,
-    firstName: "Default Name",
-    lastName: "Default Last Name",
+    firstName: "Harry",
+    lastName: "Haller",
     specialization: "Psychiatrie",
     yoe: 0,
     serviceId: 3,

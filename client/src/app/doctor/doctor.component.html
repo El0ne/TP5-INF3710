@@ -3,34 +3,34 @@
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Doctor ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> ID du Médecin</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="first-name">
-      <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.firstName }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="last-name">
-      <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Nom de Famille </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.lastName }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="field">
-      <mat-header-cell *matHeaderCellDef> Specialization </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Spécialization </mat-header-cell>
       <mat-cell *matCellDef="let element">
         {{ element.specialization }}
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="experience">
-      <mat-header-cell *matHeaderCellDef> Years of Experience </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Années d'Experience </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.yoe }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="service-id">
-      <mat-header-cell *matHeaderCellDef> Service ID </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> ID du Service </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.serviceId }} </mat-cell>
     </ng-container>
 
