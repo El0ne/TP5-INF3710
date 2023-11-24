@@ -4,7 +4,6 @@ import { injectable } from "inversify";
 @injectable()
 export class DoctorController {
 	static createDoctor = (req, res) => {
-		// TODO add doctor to list
 		for (const doctor of DoctorController.DOCTOR_LIST) {
 			if (doctor.id == req.body.id) {
 				res.status(400);
@@ -21,7 +20,7 @@ export class DoctorController {
 	};
 
 	static getAvailableDoctorId = (req, res) => {
-		res.send("10"); // TODO return an available id
+		res.send(String(Math.round(Math.random() * 99999999)));
 	};
 
 	static DOCTOR_LIST: Doctor[] = [

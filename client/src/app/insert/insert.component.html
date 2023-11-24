@@ -17,9 +17,11 @@
         placeholder="Specialization"
         [(value)]="doctor.specialization"
       >
-        <mat-option [(value)]="doctor.specialization">{{
-          doctor.specialization
-        }}</mat-option>
+        <mat-option
+          *ngFor="let specialization of specializations"
+          [value]="specialization"
+          >{{ specialization }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
@@ -39,6 +41,6 @@
       </mat-select>
     </mat-form-field>
 
-    <button mat-button (click)="onSubmit()">Ajouter le Médecin</button>
+    <button mat-button (click)="onSubmit()">Add Doctor</button>
   </div>
 </div>

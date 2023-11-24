@@ -15,11 +15,23 @@ export class InsertComponent implements OnInit {
     id: 0,
     firstName: "Default Name",
     lastName: "Default Last Name",
-    specialization: "Generalist",
+    specialization: "Psychiatrie",
     yoe: 0,
-    serviceId: 1,
+    serviceId: 3,
   };
   servicesId: number[] = [...Array(10).keys()];
+  specializations: string[] = [
+    "Dermatologie",
+    "Neurologie",
+    "Ophtalmologie",
+    "Orthopédie",
+    "Psychiatrie",
+    "Cardiologie",
+    "Pédiatrie",
+    "Chirurgie",
+    "Gynécologie",
+    "Radiologie",
+  ];
 
   constructor(
     private doctorService: DoctorService,
