@@ -5,8 +5,15 @@ import { injectable } from "inversify";
 export class DoctorController {
 	static createDoctor = (req, res) => {
 		// TODO add doctor to list
-		console.log("doctor received");
-		console.log(req.body);
+		for (const doctor of DoctorController.DOCTOR_LIST) {
+			if (doctor.id == req.body.id) {
+				res.status(400);
+				res.send(req.body);
+				return;
+			}
+		}
+		DoctorController.DOCTOR_LIST = [...DoctorController.DOCTOR_LIST, req.body];
+		res.send(req.body);
 	};
 
 	static getDoctors = (req, res) => {

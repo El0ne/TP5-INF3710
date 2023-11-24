@@ -18,7 +18,7 @@ export class DoctorService {
     return this.http.get<string>(`${DOCTOR}/id`);
   }
 
-  addDoctor(doctor: Doctor): Observable<Doctor> {
+  addDoctor(doctor: Doctor) {
     const headers = { "content-type": "application/json" };
     const body = JSON.stringify(doctor);
     console.log(body);

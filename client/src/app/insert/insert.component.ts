@@ -33,11 +33,17 @@ export class InsertComponent implements OnInit {
   }
 
   onSubmit() {
-    this.doctorService.addDoctor(this.doctor).subscribe();
+    this.doctorService.addDoctor(this.doctor).subscribe(
+      (res) => {},
+      (err) => {
+        if (err.status == 400) {
+          this.openModal("The doctor id is not available. Please try again");
+        }
+      }
+    );
     // open modal if doctor id is not  or we could load all the doctors id on init and not allow them to be entered
     // .subscribe(message)
     // if(message)
-    this.openModal("The doctor id is not available. Please try again");
   }
   openModal(message: string) {
     this.matDialog.open(ModalComponent, {
