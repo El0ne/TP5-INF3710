@@ -1,14 +1,17 @@
 <div class="container">
   <div class="form">
     <mat-form-field>
-      <input
-        matInput
-        type="number"
-        placeholder="ID du Médecin"
-        [(ngModel)]="doctor.id"
-      />
+      <mat-select
+        #id
+        placeholder="ID du Médecin à modifier"
+        [(value)]="doctor.id"
+        (selectionChange)="this.selectDoctor($event.value)"
+      >
+        <mat-option *ngFor="let id of ids" [value]="id">{{ id }}</mat-option>
+      </mat-select>
     </mat-form-field>
-
+  </div>
+  <div *ngIf="this.isIdSelected" class="form">
     <mat-form-field>
       <input matInput placeholder="Prénom" [(ngModel)]="doctor.firstName" />
     </mat-form-field>
@@ -59,9 +62,8 @@
         !this.doctor.lastName ||
         this.doctor.yoe.toString() === ''
       "
-      (click)="onSubmit()"
     >
-      Ajouter Médecin
+      Modifier Médecin
     </button>
   </div>
 </div>

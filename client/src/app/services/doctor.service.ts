@@ -14,11 +14,22 @@ export class DoctorService {
     return this.http.get<any>(DOCTOR);
   }
 
+  getDoctor(id: number): Observable<Doctor> {
+    return this.http.get<Doctor>(`${DOCTOR}/${id}`);
+  }
+
   getAvailableDoctorId(): Observable<string> {
-    return this.http.get<string>(`${DOCTOR}/id`);
+    return this.http.get<string>(`${DOCTOR}/available`);
   }
 
   addDoctor(doctor: Doctor) {
-    console.log("doctor", doctor);
+    const headers = { "content-type": "application/json" };
+    const body = JSON.stringify(doctor);
+    return this.http.post<Doctor>(DOCTOR, body, { headers });
+  }
+
+  getExistingDoctorIds() {
+    return [999, 1, 4];
+    // return this.http.get<number[]>(`${DOCTOR}/ids`);
   }
 }
