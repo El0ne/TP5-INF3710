@@ -32,4 +32,8 @@ export class DoctorService {
     return [999, 1, 4];
     // return this.http.get<number[]>(`${DOCTOR}/ids`);
   }
+
+  deleteDoctor(id: string) {
+    return this.http.delete(`${DOCTOR}/${id}`)
+  }
 }

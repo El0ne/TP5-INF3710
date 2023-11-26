@@ -13,9 +13,10 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 import { InsertComponent } from "./insert/insert.component";
 import { ModalComponent } from './modal/modal.component';
 import { ModificationComponent } from './modification/modification.component';
+import { SuppressionComponent } from './suppression/suppression.component';
 
 @NgModule({
-  declarations: [AppComponent, DoctorComponent, InsertComponent, ModalComponent, ModificationComponent],
+  declarations: [AppComponent, DoctorComponent, InsertComponent, ModalComponent, ModificationComponent, SuppressionComponent],
   imports: [
     CommonModule,
     BrowserModule,
