@@ -19,7 +19,7 @@ export class DoctorController {
 	}
 
 	configureRoutes() {
-		this.router.get("/test", async (req: Request, res: Response) => {
+		this.router.get("/", async (req: Request, res: Response) => {
 			this.databaseService.pool
 				.query("SELECT * FROM public.medecins")
 				.then((response) => {
@@ -27,7 +27,35 @@ export class DoctorController {
 				})
 				.catch((error) => console.error("Error executing query", error.stack));
 		});
+
+		this.router.get("/available", async (req: Request, res: Response) => {
+			res.send(String(Math.round(Math.random() * 99999999)));
+		});
+
+		this.router.post("/", (req, res, _) => {
+			const doctor: Doctor = req.body;
+			console.log(doctor);
+			this.databaseService.pool
+				.query(
+					`INSERT INTO public.medecins(idMedecin, prenom, nom, specialite, anneesExperience, idService) 
+        VALUES ($1, $2, $3, $4, $5, $6)`,
+					[
+						doctor.id,
+						doctor.firstName,
+						doctor.lastName,
+						doctor.specialization,
+						doctor.yoe,
+						doctor.serviceId,
+					]
+				)
+				.then((response) => {
+					res.send(response.rows);
+				})
+				.catch((error) => console.error("Error executing query", error.stack));
+		});
 	}
+
+	// TODO convert methods to fetch the db
 
 	static getDoctorFromID = (req, res) => {
 		for (const doctor of DoctorController.DOCTOR_LIST) {
