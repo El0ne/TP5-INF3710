@@ -1,10 +1,35 @@
-import { injectable } from "inversify";
+import { Router } from "express";
+import { inject, injectable } from "inversify";
+import { DatabaseService } from "../services/database.service";
+import Types from "../types";
+import { Request, Response } from "express";
+
 // import { Doctor } from "@common/doctor"; can't use it. App crash for some reasons. added it to tsconfig too
 
 @injectable()
 export class DoctorController {
+	router: Router = Router();
+
+	public constructor(
+		@inject(Types.DatabaseService)
+		private readonly databaseService: DatabaseService
+	) {
+		this.databaseService.createSchema();
+		this.configureRoutes();
+	}
+
+	configureRoutes() {
+		this.router.get("/test", async (req: Request, res: Response) => {
+			this.databaseService.pool
+				.query("SELECT * FROM public.medecins")
+				.then((response) => {
+					res.send(response.rows);
+				})
+				.catch((error) => console.error("Error executing query", error.stack));
+		});
+	}
+
 	static getDoctorFromID = (req, res) => {
-		
 		for (const doctor of DoctorController.DOCTOR_LIST) {
 			if (doctor.id == req.params.id) {
 				res.send(doctor);
@@ -42,21 +67,21 @@ export class DoctorController {
 	};
 
 	static deleteDoctor = (req, res) => {
-		const doctorIndex = DoctorController.DOCTOR_LIST.findIndex(doc => doc.id === parseInt(req.params.id));
-    	if (doctorIndex > -1) {
-        	DoctorController.DOCTOR_LIST.splice(doctorIndex, 1);
-        res.status(200).send({ message: 'Doctor deleted successfully' });
-    	} else {
-        	res.status(404).send({ message: 'Doctor not found' });
-    	}
-	}
-	
+		const doctorIndex = DoctorController.DOCTOR_LIST.findIndex(
+			(doc) => doc.id === parseInt(req.params.id)
+		);
+		if (doctorIndex > -1) {
+			DoctorController.DOCTOR_LIST.splice(doctorIndex, 1);
+			res.status(200).send({ message: "Doctor deleted successfully" });
+		} else {
+			res.status(404).send({ message: "Doctor not found" });
+		}
+	};
+
 	static getExistingDoctorsIds = (req, res) => {
-		console.log('hey');
-		const ids = DoctorController.DOCTOR_LIST.map(doctor => doctor.id);
-		console.log('ids : ', ids);
-    	res.send(ids);
-	}
+		const ids = DoctorController.DOCTOR_LIST.map((doctor) => doctor.id);
+		res.send(ids);
+	};
 
 	static DOCTOR_LIST: Doctor[] = [
 		{

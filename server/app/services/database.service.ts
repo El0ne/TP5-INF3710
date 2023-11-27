@@ -4,14 +4,28 @@ import "reflect-metadata";
 
 @injectable()
 export class DatabaseService {
-  public connectionConfig: pg.ConnectionConfig = {
-    user: "postgres",
-    database: "TP4",
-    password: "root",
-    port: 5432,          // Attention ! Peut aussi être 5433 pour certains utilisateurs
-    host: "127.0.0.1",
-    keepAlive: true
-  };
+	public connectionConfig: pg.ConnectionConfig = {
+		user: "postgres",
+		database: "postgres",
+		password: "12345",
+		port: 5432,
+		host: "127.0.0.1",
+		keepAlive: true,
+	};
 
-  public pool: pg.Pool = new pg.Pool(this.connectionConfig);
+	public pool: pg.Pool = new pg.Pool(this.connectionConfig);
+
+	public async createSchema(): Promise<void> {
+		const client = await this.pool.connect();
+		// const sql = fs.readFileSync("../database/bdschema.sql").toString();
+		// await client.query(sql);
+		// await this.insertData(client);
+		console.log("schema created");
+		client.release();
+	}
+
+	public async insertData(client: pg.PoolClient) {
+		const sql = fs.readFileSync("../database/data.sql").toString();
+		await client.query(sql);
+	}
 }
