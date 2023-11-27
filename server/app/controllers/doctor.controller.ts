@@ -25,6 +25,14 @@ export class DoctorController {
 		res.send(req.body);
 	};
 
+	static updateDoctor = (req, res) => {
+		const doctorIndex = DoctorController.DOCTOR_LIST.findIndex(
+			(doctor) => doctor.id == parseInt(req.body.id)
+		);
+		DoctorController.DOCTOR_LIST[doctorIndex] = req.body;
+		res.send(req.body);
+	};
+
 	static getDoctors = (req, res) => {
 		res.send({ doctors: DoctorController.DOCTOR_LIST });
 	};

@@ -36,4 +36,10 @@ export class DoctorService {
   deleteDoctor(id: string) {
     return this.http.delete(`${DOCTOR}/${id}`)
   }
+
+  updateDoctor(doctor: Doctor) {
+    const headers = { "content-type": "application/json" };
+    const body = JSON.stringify(doctor);
+    return this.http.put<Doctor>(`${DOCTOR}/${doctor.id}`, body, { headers });
+  }
 }
