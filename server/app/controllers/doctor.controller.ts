@@ -32,6 +32,7 @@ export class DoctorController {
 			(doctor) => doctor.id == parseInt(req.body.id)
 		);
 		DoctorController.DOCTOR_LIST[doctorIndex] = req.body;
+		res.send(req.body);
 	};
 
 	static getDoctors = (req, res) => {
