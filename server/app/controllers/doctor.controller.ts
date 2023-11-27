@@ -35,6 +35,17 @@ export class DoctorController {
 		res.send(String(Math.round(Math.random() * 99999999)));
 	};
 
+	static deleteDoctor = (req, res) => {
+		const doctorIndex = DoctorController.DOCTOR_LIST.findIndex(doc => doc.id === parseInt(req.params.id));
+		console.log('index : ', doctorIndex)
+    	if (doctorIndex > -1) {
+        	DoctorController.DOCTOR_LIST.splice(doctorIndex, 1);
+        res.status(200).send({ message: 'Doctor deleted successfully' });
+    	} else {
+        	res.status(404).send({ message: 'Doctor not found' });
+    	}
+	}
+
 	static DOCTOR_LIST: Doctor[] = [
 		{
 			id: 999,
