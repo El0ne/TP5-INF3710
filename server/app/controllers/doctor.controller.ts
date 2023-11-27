@@ -19,6 +19,33 @@ export class DoctorController {
 	}
 
 	configureRoutes() {
+		this.router.get("/available", async (req: Request, res: Response) => {
+			res.send(String(Math.round(Math.random() * 99999999)));
+		});
+
+		this.router.get("/ids", async (req: Request, res: Response) => {
+			this.databaseService.pool
+				.query("SELECT * FROM public.medecins")
+				.then((response) => {
+					const ids = response.rows.map((doctor) => doctor.idmedecin);
+					res.send(ids);
+				})
+				.catch((error) => console.error("Error executing query", error.stack));
+		});
+
+		this.router.get("/:id", async (req: Request, res: Response) => {
+			const sqlQuery = "SELECT * FROM public.medecins m WHERE m.idMedecin = $1";
+			this.databaseService.pool
+				.query({
+					text: sqlQuery,
+					values: [req.params.id],
+				})
+				.then((response) => {
+					res.send(response.rows);
+				})
+				.catch((error) => console.error("Error executing query", error.stack));
+		});
+
 		this.router.get("/", async (req: Request, res: Response) => {
 			this.databaseService.pool
 				.query("SELECT * FROM public.medecins")
@@ -26,10 +53,6 @@ export class DoctorController {
 					res.send(response.rows);
 				})
 				.catch((error) => console.error("Error executing query", error.stack));
-		});
-
-		this.router.get("/available", async (req: Request, res: Response) => {
-			res.send(String(Math.round(Math.random() * 99999999)));
 		});
 
 		this.router.post("/", (req, res, _) => {
