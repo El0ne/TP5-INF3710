@@ -1,8 +1,16 @@
-import { injectable } from "inversify";
+import { DatabaseService } from "../services/database.service";
+import { inject, injectable } from "inversify";
+import Types from "../types";
 // import { Doctor } from "@common/doctor"; can't use it. App crash for some reasons. added it to tsconfig too
 
 @injectable()
 export class DoctorController {
+
+	public constructor(
+		@inject(Types.DatabaseService) private readonly databaseService: DatabaseService) {
+			this.databaseService.createSchema();
+		}
+	
 	static getDoctorFromID = (req, res) => {
 		
 		for (const doctor of DoctorController.DOCTOR_LIST) {
@@ -52,9 +60,7 @@ export class DoctorController {
 	}
 	
 	static getExistingDoctorsIds = (req, res) => {
-		console.log('hey');
 		const ids = DoctorController.DOCTOR_LIST.map(doctor => doctor.id);
-		console.log('ids : ', ids);
     	res.send(ids);
 	}
 
