@@ -45,7 +45,6 @@ export class InsertComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.doctor);
     this.doctorService.addDoctor(this.doctor).subscribe(
       (res) => {},
       (err) => {
