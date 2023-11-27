@@ -47,4 +47,8 @@ export class ModificationComponent implements OnInit {
     });
     this.isIdSelected = true;
   }
+
+  onSubmit(): void {
+    this.doctorService.updateDoctor(this.doctor).subscribe();
+  }
 }

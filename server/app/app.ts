@@ -28,7 +28,6 @@ export class Application {
 
 	public bindRoutes(): void {
 		this.app.use("/doctor", doctorRouter);
-		// this.app.get("/database", this.databaseController.getId);
 		this.errorHandeling();
 	}
 

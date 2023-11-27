@@ -32,4 +32,10 @@ export class DoctorService {
     return [999, 1, 4];
     // return this.http.get<number[]>(`${DOCTOR}/ids`);
   }
+
+  updateDoctor(doctor: Doctor) {
+    const headers = { "content-type": "application/json" };
+    const body = JSON.stringify(doctor);
+    return this.http.put<Doctor>(`${DOCTOR}/${doctor.id}`, body, { headers });
+  }
 }
