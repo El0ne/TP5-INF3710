@@ -1,3 +1,6 @@
+DELETE FROM Medecins;
+DELETE FROM Services;
+
 INSERT INTO Services (idService, nomService)
 VALUES
     (0, 'Dermatologie'),
