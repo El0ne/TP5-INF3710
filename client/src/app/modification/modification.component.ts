@@ -38,7 +38,9 @@ export class ModificationComponent implements OnInit {
   constructor(private doctorService: DoctorService) {}
 
   ngOnInit(): void {
-    this.ids = this.doctorService.getExistingDoctorIds();
+    this.doctorService.getExistingDoctorIds().subscribe((ids) => {
+      this.ids = ids;
+    });
   }
 
   selectDoctor(id: number): void {

@@ -4,9 +4,7 @@ import { injectable } from "inversify";
 @injectable()
 export class DoctorController {
 	static getDoctorFromID = (req, res) => {
-		console.log("req: ", req);
-		console.log("req.params: ", req.params);
-		console.log("req.params.id: ", req.params.id);
+		
 		for (const doctor of DoctorController.DOCTOR_LIST) {
 			if (doctor.id == req.params.id) {
 				res.send(doctor);
@@ -37,13 +35,19 @@ export class DoctorController {
 
 	static deleteDoctor = (req, res) => {
 		const doctorIndex = DoctorController.DOCTOR_LIST.findIndex(doc => doc.id === parseInt(req.params.id));
-		console.log('index : ', doctorIndex)
     	if (doctorIndex > -1) {
         	DoctorController.DOCTOR_LIST.splice(doctorIndex, 1);
         res.status(200).send({ message: 'Doctor deleted successfully' });
     	} else {
         	res.status(404).send({ message: 'Doctor not found' });
     	}
+	}
+	
+	static getExistingDoctorsIds = (req, res) => {
+		console.log('hey');
+		const ids = DoctorController.DOCTOR_LIST.map(doctor => doctor.id);
+		console.log('ids : ', ids);
+    	res.send(ids);
 	}
 
 	static DOCTOR_LIST: Doctor[] = [

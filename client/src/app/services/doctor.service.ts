@@ -29,8 +29,8 @@ export class DoctorService {
   }
 
   getExistingDoctorIds() {
-    return [999, 1, 4];
-    // return this.http.get<number[]>(`${DOCTOR}/ids`);
+    // return [999, 1, 4];
+    return this.http.get<number[]>(`${DOCTOR}/ids`);
   }
 
   deleteDoctor(id: string) {
