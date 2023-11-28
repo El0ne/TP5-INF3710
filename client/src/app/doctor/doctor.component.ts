@@ -10,24 +10,33 @@ import { Doctor } from "@common/doctor";
   styleUrls: ["./doctor.component.css"],
 })
 export class DoctorComponent implements OnInit {
+  // Mettez à jour le tableau avec les noms de colonnes qui correspondent aux propriétés des données
   displayedColumns = [
-    "id",
-    "first-name",
-    "last-name",
-    "field",
-    "experience",
-    "service-id",
+    "idmedecin",
+    "prenom",
+    "nom",
+    "specialite",
+    "anneesexperience",
+    "service"
   ];
   dataSource = new MatTableDataSource<Doctor>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  doctors: Doctor[];
 
   constructor(private doctorService: DoctorService) {}
 
   ngOnInit(): void {
     this.doctorService.getDoctors().subscribe((doctorList) => {
-      this.dataSource.data = doctorList.doctors;
+      console.log("fetched doctors", doctorList);
+      this.dataSource.data = doctorList;
+      console.log("datasouce of doctors", this.dataSource.data);
+    },
+    error => {
+      console.error("error fetching doctors", error);
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 }

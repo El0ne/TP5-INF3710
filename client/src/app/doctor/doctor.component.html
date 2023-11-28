@@ -2,36 +2,35 @@
 
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> ID du Médecin</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+
+    <ng-container matColumnDef="idmedecin">
+      <mat-header-cell *matHeaderCellDef> ID du Médecin </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.idmedecin }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="first-name">
+    <ng-container matColumnDef="prenom">
       <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.firstName }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.prenom }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="last-name">
+    <ng-container matColumnDef="nom">
       <mat-header-cell *matHeaderCellDef> Nom de Famille </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.lastName }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.nom }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="field">
-      <mat-header-cell *matHeaderCellDef> Spécialization </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        {{ element.specialization }}
-      </mat-cell>
+    <ng-container matColumnDef="specialite">
+      <mat-header-cell *matHeaderCellDef> Spécialisation </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.specialite }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="experience">
-      <mat-header-cell *matHeaderCellDef> Années d'Experience </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.yoe }} </mat-cell>
+    <ng-container matColumnDef="anneesexperience">
+      <mat-header-cell *matHeaderCellDef> Années d'Expérience </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{ element.anneesexperience }} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="service-id">
+    <ng-container matColumnDef="service">
       <mat-header-cell *matHeaderCellDef> ID du Service </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.serviceId }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.service }} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
