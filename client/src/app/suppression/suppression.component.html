@@ -2,8 +2,8 @@
     <mat-form-field appearance="fill" class="doc-field">
         <mat-label>Choisir un médecin à supprimer</mat-label>
         <mat-select [(ngModel)]="selectedDoctorId">
-            <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">
-                {{ doctor.firstName }} {{ doctor.lastName }} - {{ doctor.specialization}}  ({{doctor.id}})
+            <mat-option *ngFor="let doctor of doctors" [value]="doctor.idmedecin">
+                {{ doctor.prenom }} {{ doctor.nom }} - {{ doctor.specialite}}  ({{doctor.idmedecin}})
             </mat-option>
         </mat-select>
     </mat-form-field>

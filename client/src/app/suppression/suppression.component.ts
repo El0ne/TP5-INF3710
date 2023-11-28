@@ -18,14 +18,20 @@ export class SuppressionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.doctorService.getDoctors().subscribe((data) => {
-      this.doctors = data.doctors;
-    });
+    this.doctorService.getDoctors().subscribe(
+      response => {
+        console.log('Response from getDoctors()', response);
+        this.doctors = response; 
+        // check si la réponse est un tableau
+        console.log('Is "doctors" an array?', Array.isArray(this.doctors));
+      },
+      error => {
+        console.error('Error fetching doctors', error);
+      }
+    );
   }
 
   onDelete(): void {
-    console.log(this.selectedDoctorId);
-    console.log('URL: ', URL);
     if (this.selectedDoctorId) {
       this.doctorService.deleteDoctor(this.selectedDoctorId).subscribe(() => {
         this.doctors = this.doctors.filter(doc => doc.id !== Number(this.selectedDoctorId));

@@ -10,7 +10,6 @@ import { Doctor } from "@common/doctor";
   styleUrls: ["./doctor.component.css"],
 })
 export class DoctorComponent implements OnInit {
-  // Mettez à jour le tableau avec les noms de colonnes qui correspondent aux propriétés des données
   displayedColumns = [
     "idmedecin",
     "prenom",
