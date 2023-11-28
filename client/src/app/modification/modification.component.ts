@@ -9,12 +9,12 @@ import { Doctor } from "@common/doctor";
 })
 export class ModificationComponent implements OnInit {
   doctor: Doctor = {
-    id: -1,
-    firstName: "",
-    lastName: "",
-    specialization: "",
-    yoe: -1,
-    serviceId: -1,
+    idmedecin: -1,
+    prenom: "",
+    nom: "",
+    specialite: "",
+    anneesexperience: -1,
+    idservice: -1,
   };
 
   servicesId: number[] = [...Array(10).keys()];

@@ -5,31 +5,24 @@
         matInput
         type="number"
         placeholder="ID du Médecin"
-        [(ngModel)]="doctor.id"
+        [(ngModel)]="doctor.idmedecin"
       />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Prénom" [(ngModel)]="doctor.firstName" />
+      <input matInput placeholder="Prénom" [(ngModel)]="doctor.prenom" />
     </mat-form-field>
 
     <mat-form-field>
-      <input
-        matInput
-        placeholder="Nom de Famille"
-        [(ngModel)]="doctor.lastName"
-      />
+      <input matInput placeholder="Nom de Famille" [(ngModel)]="doctor.nom" />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select
-        placeholder="Spécialization"
-        [(value)]="doctor.specialization"
-      >
+      <mat-select placeholder="Spécialization" [(value)]="doctor.specialite">
         <mat-option
-          *ngFor="let specialization of specializations"
-          [value]="specialization"
-          >{{ specialization }}</mat-option
+          *ngFor="let specialite of specialites"
+          [value]="specialite"
+          >{{ specialite }}</mat-option
         >
       </mat-select>
     </mat-form-field>
@@ -39,13 +32,13 @@
         matInput
         type="number"
         placeholder="Années d'Expérience"
-        [(ngModel)]="doctor.yoe"
+        [(ngModel)]="doctor.anneesexperience"
       />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.serviceId">
-        <mat-option *ngFor="let service of servicesId" [value]="service">{{
+      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.idservice">
+        <mat-option *ngFor="let service of idServices" [value]="service">{{
           service
         }}</mat-option>
       </mat-select>
@@ -54,10 +47,10 @@
     <button
       mat-button
       [disabled]="
-        !this.doctor.id ||
-        !this.doctor.firstName ||
-        !this.doctor.lastName ||
-        this.doctor.yoe.toString() === ''
+        !this.doctor.idmedecin ||
+        !this.doctor.prenom ||
+        !this.doctor.nom ||
+        this.doctor.anneesexperience.toString() === ''
       "
       (click)="onSubmit()"
     >

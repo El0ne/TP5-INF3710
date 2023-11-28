@@ -1,14 +1,21 @@
 <div class="container">
-    <mat-form-field appearance="fill" class="doc-field">
-        <mat-label>Choisir un médecin à supprimer</mat-label>
-        <mat-select [(ngModel)]="selectedDoctorId">
-            <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">
-                {{ doctor.firstName }} {{ doctor.lastName }} - {{ doctor.specialization}}  ({{doctor.id}})
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+  <mat-form-field appearance="fill" class="doc-field">
+    <mat-label>Choisir un médecin à supprimer</mat-label>
+    <mat-select [(ngModel)]="selectedDoctorId">
+      <mat-option *ngFor="let doctor of doctors" [value]="doctor.id">
+        {{ doctor.prenom }} {{ doctor.nom }} - {{ doctor.specialite }} ({{
+          doctor.id
+        }})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <button mat-raised-button color="warn" (click)="onDelete()" [disabled]="!selectedDoctorId">
-        Supprimer
-    </button>
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="onDelete()"
+    [disabled]="!selectedDoctorId"
+  >
+    Supprimer
+  </button>
 </div>

@@ -11,12 +11,12 @@ import { Doctor } from "@common/doctor";
 })
 export class DoctorComponent implements OnInit {
   displayedColumns = [
-    "id",
-    "first-name",
-    "last-name",
-    "field",
-    "experience",
-    "service-id",
+    "idmedecin",
+    "prenom",
+    "nom",
+    "specialite",
+    "anneesexperience",
+    "idservice",
   ];
   dataSource = new MatTableDataSource<Doctor>();
 
@@ -27,7 +27,8 @@ export class DoctorComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getDoctors().subscribe((doctorList) => {
-      this.dataSource.data = doctorList.doctors;
+      this.dataSource.data = doctorList;
+      console.log("doctorList", doctorList);
     });
   }
 }

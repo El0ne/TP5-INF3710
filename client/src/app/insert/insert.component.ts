@@ -12,15 +12,15 @@ export class InsertComponent implements OnInit {
   defaultField: string;
 
   doctor: Doctor = {
-    id: 0,
-    firstName: "Harry",
-    lastName: "Haller",
-    specialization: "Psychiatrie",
-    yoe: 0,
-    serviceId: 3,
+    idmedecin: 0,
+    prenom: "Harry",
+    nom: "Haller",
+    specialite: "Psychiatrie",
+    anneesexperience: 0,
+    idservice: 3,
   };
-  servicesId: number[] = [...Array(10).keys()];
-  specializations: string[] = [
+  idServices: number[] = [...Array(10).keys()];
+  specialites: string[] = [
     "Dermatologie",
     "Neurologie",
     "Ophtalmologie",
@@ -40,14 +40,13 @@ export class InsertComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getAvailableDoctorId().subscribe((id) => {
-      this.doctor.id = Number(id);
+      this.doctor.idmedecin = Number(id);
     });
   }
 
   onSubmit() {
-    console.log(this.doctor);
     this.doctorService.addDoctor(this.doctor).subscribe(
-      (res) => {},
+      () => {},
       (err) => {
         if (err.status == 400) {
           this.openModal(

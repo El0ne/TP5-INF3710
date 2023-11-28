@@ -4,34 +4,38 @@
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> ID du Médecin</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.idmedecin }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="first-name">
       <mat-header-cell *matHeaderCellDef> Prénom </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.firstName }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.prenom }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="last-name">
       <mat-header-cell *matHeaderCellDef> Nom de Famille </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.lastName }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.nom }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="field">
-      <mat-header-cell *matHeaderCellDef> Spécialization </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Spécialité </mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.specialization }}
+        {{ element.specialite }}
       </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="experience">
       <mat-header-cell *matHeaderCellDef> Années d'Experience </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.yoe }} </mat-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.anneesexperience }}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="service-id">
       <mat-header-cell *matHeaderCellDef> ID du Service </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.serviceId }} </mat-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.servidserviceiceId }}
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
