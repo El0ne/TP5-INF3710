@@ -4,7 +4,6 @@ import * as cors from "cors";
 import * as express from "express";
 import { inject, injectable } from "inversify";
 import * as logger from "morgan";
-import doctorRouter from "./routes/doctorRouter";
 import Types from "./types";
 import { DoctorController } from "./controllers/doctor.controller";
 
@@ -32,8 +31,7 @@ export class Application {
 	}
 
 	public bindRoutes(): void {
-		this.app.use("/database", this.doctorController.router);
-		this.app.use("/doctor", doctorRouter);
+		this.app.use("/doctor", this.doctorController.router);
 		this.errorHandeling();
 	}
 
