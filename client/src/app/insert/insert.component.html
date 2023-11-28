@@ -5,26 +5,26 @@
         matInput
         type="number"
         placeholder="ID du Médecin"
-        [(ngModel)]="doctor.id"
+        [(ngModel)]="doctor.idmedecin"
       />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Prénom" [(ngModel)]="doctor.firstName" />
+      <input matInput placeholder="Prénom" [(ngModel)]="doctor.prenom" />
     </mat-form-field>
 
     <mat-form-field>
       <input
         matInput
         placeholder="Nom de Famille"
-        [(ngModel)]="doctor.lastName"
+        [(ngModel)]="doctor.nom"
       />
     </mat-form-field>
 
     <mat-form-field>
       <mat-select
         placeholder="Spécialization"
-        [(value)]="doctor.specialization"
+        [(value)]="doctor.specialite"
       >
         <mat-option
           *ngFor="let specialization of specializations"
@@ -39,12 +39,12 @@
         matInput
         type="number"
         placeholder="Années d'Expérience"
-        [(ngModel)]="doctor.yoe"
+        [(ngModel)]="doctor.anneesexperience"
       />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.serviceId">
+      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.service">
         <mat-option *ngFor="let service of servicesId" [value]="service">{{
           service
         }}</mat-option>
@@ -54,10 +54,10 @@
     <button
       mat-button
       [disabled]="
-        !this.doctor.id ||
-        !this.doctor.firstName ||
-        !this.doctor.lastName ||
-        this.doctor.yoe.toString() === ''
+        !this.doctor.idmedecin ||
+        !this.doctor.prenom ||
+        !this.doctor.nom ||
+        this.doctor.anneesexperience.toString() === ''
       "
       (click)="onSubmit()"
     >

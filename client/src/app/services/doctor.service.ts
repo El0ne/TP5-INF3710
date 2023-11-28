@@ -47,6 +47,6 @@ export class DoctorService {
   updateDoctor(doctor: Doctor) {
     const headers = { "content-type": "application/json" };
     const body = JSON.stringify(doctor);
-    return this.http.put<Doctor>(`${DOCTOR}/${doctor.id}`, body, { headers });
+    return this.http.put<Doctor>(`${DOCTOR}/${doctor.idmedecin}`, body, { headers });
   }
 }

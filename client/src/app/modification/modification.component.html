@@ -2,68 +2,44 @@
   <div class="form">
     <mat-form-field>
       <mat-select
-        #id
         placeholder="ID du Médecin à modifier"
-        [(value)]="doctor.id"
-        (selectionChange)="this.selectDoctor($event.value)"
+        [(value)]="doctor.idmedecin"
+        (selectionChange)="selectDoctor($event.value)"
       >
         <mat-option *ngFor="let id of ids" [value]="id">{{ id }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
-  <div *ngIf="this.isIdSelected" class="form">
+  <div *ngIf="isIdSelected" class="form">
     <mat-form-field>
-      <input matInput placeholder="Prénom" [(ngModel)]="doctor.firstName" />
+      <input matInput placeholder="Prénom" [(ngModel)]="doctor.prenom" />
     </mat-form-field>
 
     <mat-form-field>
-      <input
-        matInput
-        placeholder="Nom de Famille"
-        [(ngModel)]="doctor.lastName"
-      />
+      <input matInput placeholder="Nom de Famille" [(ngModel)]="doctor.nom" />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select
-        placeholder="Spécialization"
-        [(value)]="doctor.specialization"
-      >
-        <mat-option
-          *ngFor="let specialization of specializations"
-          [value]="specialization"
-          >{{ specialization }}</mat-option
-        >
+      <mat-select placeholder="Spécialization" [(value)]="doctor.specialite">
+        <mat-option *ngFor="let specialization of specializations" [value]="specialization">
+          {{ specialization }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <input
-        matInput
-        type="number"
-        placeholder="Années d'Expérience"
-        [(ngModel)]="doctor.yoe"
-      />
+      <input matInput type="number" placeholder="Années d'Expérience" [(ngModel)]="doctor.anneesexperience" />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.serviceId">
-        <mat-option *ngFor="let service of servicesId" [value]="service">{{
-          service
-        }}</mat-option>
+      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.service">
+        <mat-option *ngFor="let service of servicesId" [value]="service">
+          {{ service }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button
-      mat-button
-      [disabled]="
-        !this.doctor.id ||
-        !this.doctor.firstName ||
-        !this.doctor.lastName ||
-        this.doctor.yoe.toString() === ''
-      "
-      (click)="onSubmit()"
-    >
+    <button mat-button [disabled]="!doctor.idmedecin || !doctor.prenom || !doctor.nom || doctor.anneesexperience === null" (click)="onSubmit()">
       Modifier Médecin
     </button>
   </div>

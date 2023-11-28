@@ -34,7 +34,7 @@ export class SuppressionComponent implements OnInit {
   onDelete(): void {
     if (this.selectedDoctorId) {
       this.doctorService.deleteDoctor(this.selectedDoctorId).subscribe(() => {
-        this.doctors = this.doctors.filter(doc => doc.id !== Number(this.selectedDoctorId));
+        this.doctors = this.doctors.filter(doc => doc.idmedecin !== Number(this.selectedDoctorId));
         this.selectedDoctorId = null; // Reset the selection
       });
     }

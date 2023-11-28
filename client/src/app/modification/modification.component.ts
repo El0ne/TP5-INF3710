@@ -9,12 +9,12 @@ import { Doctor } from "@common/doctor";
 })
 export class ModificationComponent implements OnInit {
   doctor: Doctor = {
-    id: -1,
-    firstName: "",
-    lastName: "",
-    specialization: "",
-    yoe: -1,
-    serviceId: -1,
+    idmedecin: -1,
+    prenom: "",
+    nom: "",
+    specialite: "",
+    anneesexperience: -1,
+    service: -1,
   };
 
   servicesId: number[] = [...Array(10).keys()];
@@ -39,12 +39,14 @@ export class ModificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getExistingDoctorIds().subscribe((ids) => {
+      console.log("IDs récupérés:", ids);
       this.ids = ids;
     });
   }
 
   selectDoctor(id: number): void {
     this.doctorService.getDoctor(id).subscribe((doctor) => {
+      console.log("Données du médecin récupérées:", doctor);
       this.doctor = doctor;
     });
     this.isIdSelected = true;
