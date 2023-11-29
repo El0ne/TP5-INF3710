@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Doctor } from "@common/doctor";
-import { Observable, catchError, tap, throwError } from "rxjs";
+import { Observable } from "rxjs";
 import { DOCTOR } from "./server-routes";
 
 @Injectable({
@@ -10,14 +10,8 @@ import { DOCTOR } from "./server-routes";
 export class DoctorService {
   constructor(private http: HttpClient) {}
 
-  getDoctors(): Observable<any> {
-    return this.http.get<any>(DOCTOR).pipe(
-      tap((doctors) => console.log("Doctors from the server", doctors)),
-      catchError((error) => {
-        console.error("Error fetching doctors", error);
-        return throwError(error);
-      })
-    );
+  getDoctors(): Observable<Doctor[]> {
+    return this.http.get<Doctor[]>(DOCTOR);
   }
 
   getDoctor(id: number): Observable<Doctor> {
