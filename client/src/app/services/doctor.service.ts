@@ -48,7 +48,7 @@ export class DoctorService {
     // TODO add return value
     const headers = { "content-type": "application/json" };
     const body = JSON.stringify(doctor);
-    return this.http.put<Doctor>(`${DOCTOR}/${doctor.idmedecin}`, body, {
+    return this.http.put<Doctor>(DOCTOR, body, {
       headers,
     });
   }

@@ -45,7 +45,6 @@ export class ModificationComponent implements OnInit {
 
   selectDoctor(id: number): void {
     this.doctorService.getDoctor(id).subscribe((doctor) => {
-      console.log("Données du médecin récupérées:", doctor);
       this.doctor = doctor;
     });
     this.isIdSelected = true;
