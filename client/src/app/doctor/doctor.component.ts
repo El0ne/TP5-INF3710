@@ -16,7 +16,7 @@ export class DoctorComponent implements OnInit {
     "nom",
     "specialite",
     "anneesexperience",
-    "service"
+    "idservice",
   ];
   dataSource = new MatTableDataSource<Doctor>();
 
@@ -26,12 +26,7 @@ export class DoctorComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getDoctors().subscribe((doctorList) => {
-      console.log("fetched doctors", doctorList);
       this.dataSource.data = doctorList;
-      console.log("datasouce of doctors", this.dataSource.data);
-    },
-    error => {
-      console.error("error fetching doctors", error);
     });
   }
 

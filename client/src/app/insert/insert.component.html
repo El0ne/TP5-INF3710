@@ -14,18 +14,11 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input
-        matInput
-        placeholder="Nom de Famille"
-        [(ngModel)]="doctor.nom"
-      />
+      <input matInput placeholder="Nom de Famille" [(ngModel)]="doctor.nom" />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select
-        placeholder="Spécialization"
-        [(value)]="doctor.specialite"
-      >
+      <mat-select placeholder="Spécialization" [(value)]="doctor.specialite">
         <mat-option
           *ngFor="let specialization of specializations"
           [value]="specialization"
@@ -44,7 +37,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.service">
+      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.idservice">
         <mat-option *ngFor="let service of servicesId" [value]="service">{{
           service
         }}</mat-option>

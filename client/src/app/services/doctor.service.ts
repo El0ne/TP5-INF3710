@@ -35,14 +35,17 @@ export class DoctorService {
   }
 
   getExistingDoctorIds() {
+    // TODO add return value
     return this.http.get<number[]>(`${DOCTOR}/ids`);
   }
 
   deleteDoctor(id: string) {
+    // TODO add return value
     return this.http.delete(`${DOCTOR}/${id}`);
   }
 
   updateDoctor(doctor: Doctor) {
+    // TODO add return value
     const headers = { "content-type": "application/json" };
     const body = JSON.stringify(doctor);
     return this.http.put<Doctor>(`${DOCTOR}/${doctor.idmedecin}`, body, {

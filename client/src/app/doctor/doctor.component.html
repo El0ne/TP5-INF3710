@@ -2,7 +2,6 @@
 
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
-
     <ng-container matColumnDef="idmedecin">
       <mat-header-cell *matHeaderCellDef> ID du Médecin </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{ element.idmedecin }} </mat-cell>
@@ -25,12 +24,14 @@
 
     <ng-container matColumnDef="anneesexperience">
       <mat-header-cell *matHeaderCellDef> Années d'Expérience </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.anneesexperience }} </mat-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.anneesexperience }}
+      </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="service">
+    <ng-container matColumnDef="idservice">
       <mat-header-cell *matHeaderCellDef> ID du Service </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{ element.service }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.idservice }} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

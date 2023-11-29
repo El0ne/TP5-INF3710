@@ -17,7 +17,7 @@ export class InsertComponent implements OnInit {
     nom: "Haller",
     specialite: "Psychiatrie",
     anneesexperience: 0,
-    service: 3,
+    idservice: 3,
   };
   servicesId: number[] = [...Array(10).keys()];
   specializations: string[] = [

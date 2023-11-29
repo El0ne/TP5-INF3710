@@ -14,7 +14,7 @@ export class ModificationComponent implements OnInit {
     nom: "",
     specialite: "",
     anneesexperience: -1,
-    service: -1,
+    idservice: -1,
   };
 
   servicesId: number[] = [...Array(10).keys()];

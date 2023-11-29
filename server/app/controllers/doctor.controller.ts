@@ -79,7 +79,7 @@ export class DoctorController {
 							doctor.nom,
 							doctor.specialite,
 							doctor.anneesexperience,
-							doctor.service,
+							doctor.idservice,
 						])
 						.then(() => {
 							res.send(doctor);
@@ -101,7 +101,7 @@ export class DoctorController {
 						doctor.nom,
 						doctor.specialite,
 						doctor.anneesexperience,
-						doctor.service,
+						doctor.idservice,
 					]
 				)
 				.then(() => {
@@ -131,5 +131,5 @@ interface Doctor {
 	nom: string;
 	specialite: string;
 	anneesexperience: number;
-	service: number;
+	idservice: number;
 }
