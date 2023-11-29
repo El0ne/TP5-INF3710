@@ -34,21 +34,18 @@ export class DoctorService {
     return this.http.post<Doctor>(DOCTOR, body, { headers });
   }
 
-  getExistingDoctorIds() {
-    // TODO add return value
+  getExistingDoctorIds(): Observable<number[]> {
     return this.http.get<number[]>(`${DOCTOR}/ids`);
   }
 
-  deleteDoctor(id: string) {
-    // TODO add return value
-    return this.http.delete(`${DOCTOR}/${id}`);
+  deleteDoctor(id: string): Observable<void> {
+    return this.http.delete<void>(`${DOCTOR}/${id}`);
   }
 
-  updateDoctor(doctor: Doctor) {
-    // TODO add return value
+  updateDoctor(doctor: Doctor): Observable<void> {
     const headers = { "content-type": "application/json" };
     const body = JSON.stringify(doctor);
-    return this.http.put<Doctor>(DOCTOR, body, {
+    return this.http.put<void>(DOCTOR, body, {
       headers,
     });
   }

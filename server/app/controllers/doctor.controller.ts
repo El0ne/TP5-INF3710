@@ -105,7 +105,7 @@ export class DoctorController {
 					]
 				)
 				.then(() => {
-					res.send(doctor);
+					res.status(204).send();
 				})
 				.catch((error) => console.error("Error executing query", error.stack));
 		});
@@ -118,7 +118,7 @@ export class DoctorController {
 					values: [req.params.id],
 				})
 				.then(() => {
-					res.send([]);
+					res.status(204).send();
 				})
 				.catch((error) => console.error("Error executing query", error.stack));
 		});
