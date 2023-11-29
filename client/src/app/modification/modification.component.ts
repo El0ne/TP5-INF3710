@@ -39,7 +39,7 @@ export class ModificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getExistingDoctorIds().subscribe((ids) => {
-      this.ids = ids.sort();
+      this.ids = ids.sort((a, b) => a - b);
     });
   }
 
