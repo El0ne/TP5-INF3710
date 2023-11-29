@@ -41,7 +41,7 @@ export class DoctorController {
 					values: [req.params.id],
 				})
 				.then((response) => {
-					res.send(response.rows);
+					res.send(response.rows[0]);
 				})
 				.catch((error) => console.error("Error executing query", error.stack));
 		});

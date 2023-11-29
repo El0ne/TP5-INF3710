@@ -10,7 +10,7 @@ import { Doctor } from "@common/doctor";
 export class ModificationComponent implements OnInit {
   doctor: Doctor = {
     idmedecin: -1,
-    prenom: "",
+    prenom: "tt",
     nom: "",
     specialite: "",
     anneesexperience: -1,
@@ -39,7 +39,6 @@ export class ModificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.doctorService.getExistingDoctorIds().subscribe((ids) => {
-      console.log("IDs récupérés:", ids);
       this.ids = ids;
     });
   }

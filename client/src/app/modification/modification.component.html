@@ -21,25 +21,39 @@
 
     <mat-form-field>
       <mat-select placeholder="Spécialization" [(value)]="doctor.specialite">
-        <mat-option *ngFor="let specialization of specializations" [value]="specialization">
+        <mat-option
+          *ngFor="let specialization of specializations"
+          [value]="specialization"
+        >
           {{ specialization }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="number" placeholder="Années d'Expérience" [(ngModel)]="doctor.anneesexperience" />
+      <input
+        matInput
+        type="number"
+        placeholder="Années d'Expérience"
+        [(ngModel)]="doctor.anneesexperience"
+      />
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.service">
+      <mat-select placeholder="ID du Service" [(ngModel)]="doctor.idservice">
         <mat-option *ngFor="let service of servicesId" [value]="service">
           {{ service }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <button mat-button [disabled]="!doctor.idmedecin || !doctor.prenom || !doctor.nom || doctor.anneesexperience === null" (click)="onSubmit()">
+    <button
+      mat-button
+      [disabled]="
+        !doctor.prenom || !doctor.nom || doctor.anneesexperience === null
+      "
+      (click)="onSubmit()"
+    >
       Modifier Médecin
     </button>
   </div>
