@@ -10,7 +10,7 @@ import { Doctor } from "@common/doctor";
 export class ModificationComponent implements OnInit {
   doctor: Doctor = {
     idmedecin: -1,
-    prenom: "tt",
+    prenom: "",
     nom: "",
     specialite: "",
     anneesexperience: -1,

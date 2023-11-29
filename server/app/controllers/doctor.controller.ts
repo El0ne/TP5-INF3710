@@ -57,15 +57,12 @@ export class DoctorController {
 
 		this.router.post("/", (req: Request, res: Response) => {
 			const doctor: Doctor = req.body;
-			console.log("doctor", doctor);
 
 			this.databaseService.pool
 				.query("SELECT * FROM public.medecins")
 				.then((response) => {
-					console.log("first query");
 					const ids = response.rows.map((doctor) => doctor.idmedecin);
 					if (ids.includes(Number(req.body.idmedecin))) {
-						console.log("doctor exists");
 						res.send(null);
 						res.status(400);
 						return;
