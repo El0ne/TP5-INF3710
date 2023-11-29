@@ -45,20 +45,13 @@ export class InsertComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.doctor);
-    this.doctorService.addDoctor(this.doctor).subscribe(
-      (res) => {
-        console.log("docteur ajouté");
-      },
-      (err) => {
-        console.log("uh oh doc déjà added");
-        if (err.status == 400) {
-          this.openModal(
-            "Les ID pour le médecin est déjà pris. Choisissez en un autre"
-          );
-        }
+    this.doctorService.addDoctor(this.doctor).subscribe((res) => {
+      if (!res) {
+        this.openModal(
+          "Les ID pour le médecin est déjà pris. Choisissez en un autre"
+        );
       }
-    );
+    });
   }
   openModal(message: string) {
     this.matDialog.open(ModalComponent, {

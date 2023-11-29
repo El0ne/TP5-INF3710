@@ -4,7 +4,7 @@ import { DatabaseService } from "../services/database.service";
 import Types from "../types";
 import { Request, Response } from "express";
 
-// import { Doctor } from "@common/doctor"; can't use it. App crash for some reasons. added it to tsconfig too
+// import { Doctor } from "../../../common/doctor"; // can't use it. App crash for some reasons. added it to tsconfig too
 
 @injectable()
 export class DoctorController {
@@ -57,19 +57,33 @@ export class DoctorController {
 
 		this.router.post("/", (req: Request, res: Response) => {
 			const doctor: Doctor = req.body;
-			const sqlQuery = `INSERT INTO public.medecins(idMedecin, prenom, nom, specialite, anneesExperience, idService) 
-                              VALUES ($1, $2, $3, $4, $5, $6)`;
+			console.log("doctor", doctor);
+
 			this.databaseService.pool
-				.query(sqlQuery, [
-					doctor.id,
-					doctor.firstName,
-					doctor.lastName,
-					doctor.specialization,
-					doctor.yoe,
-					doctor.serviceId,
-				])
-				.then(() => {
-					res.send(doctor);
+				.query("SELECT * FROM public.medecins")
+				.then((response) => {
+					console.log("first query");
+					const ids = response.rows.map((doctor) => doctor.idmedecin);
+					if (ids.includes(Number(req.body.idmedecin))) {
+						console.log("doctor exists");
+						res.send(null);
+						res.status(400);
+						return;
+					}
+					const sqlQuery = `INSERT INTO public.medecins(idMedecin, prenom, nom, specialite, anneesExperience, idService) 
+                              VALUES ($1, $2, $3, $4, $5, $6)`;
+					this.databaseService.pool
+						.query(sqlQuery, [
+							doctor.idmedecin,
+							doctor.prenom,
+							doctor.nom,
+							doctor.specialite,
+							doctor.anneesexperience,
+							doctor.service,
+						])
+						.then(() => {
+							res.send(doctor);
+						});
 				})
 				.catch((error) => console.error("Error executing query", error.stack));
 		});
@@ -82,12 +96,12 @@ export class DoctorController {
                     SET prenom = $2, nom = $3, specialite = $4, anneesExperience = $5, idService = $6
                     WHERE m.idMedecin = $1`,
 					[
-						doctor.id,
-						doctor.firstName,
-						doctor.lastName,
-						doctor.specialization,
-						doctor.yoe,
-						doctor.serviceId,
+						doctor.idmedecin,
+						doctor.prenom,
+						doctor.nom,
+						doctor.specialite,
+						doctor.anneesexperience,
+						doctor.service,
 					]
 				)
 				.then(() => {
@@ -111,11 +125,11 @@ export class DoctorController {
 	}
 }
 
-export interface Doctor {
-	id: number;
-	firstName: string;
-	lastName: string;
-	specialization: string;
-	yoe: number;
-	serviceId: number;
+interface Doctor {
+	idmedecin: number;
+	prenom: string;
+	nom: string;
+	specialite: string;
+	anneesexperience: number;
+	service: number;
 }
